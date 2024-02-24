@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 
 def index(requrest):
@@ -18,6 +18,8 @@ def category_slug(requrest, cat_slug):
 
 
 def archive(requrest, year):
+    if year > 2023:
+        return redirect('home')
     return HttpResponse(f"<h1>Архив по годам</h1>"
                         f"<p>{year}</p>")
 
