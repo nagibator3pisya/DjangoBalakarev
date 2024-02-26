@@ -6,8 +6,20 @@
 </head>
 <body>
 <h1>{{ title }}</h1>
-<p>{{ menu }}</p>
-<p>{{float |add:"2" }}</p>
-<p>{{ string|center:"20" }}</p>
+<p>{{ menu|join:' | ' }}</p>
+<ul>
+    {%for p in post%}
+    {% if p.is_published %}
+    <li>
+       <h2> {{p.title}} </h2>
+        <p>{{p.content}}</p>
+        {% if not forloop.last %}
+        <hr>
+        {%endif%}
+    </li>
+    {% endif %}
+    {% endfor %}
+
+</ul>
 </body>
 </html>
