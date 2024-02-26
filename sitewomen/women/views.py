@@ -1,7 +1,13 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 
-menu = ['О сайте', 'Добавить статью', 'Обратная связь', 'Войти']
+
+menu = [
+    {'title': "О сайте",  'url_name': 'about'},
+    {'title': "Добавить статью", 'url_name': 'add_page'},
+    {'title': "Обратная связь", 'url_name': 'contact'},
+    {'title': "Войти", 'url_name': 'login'}
+]
 data_bd = [
     {'id': 1, 'title': 'Анджелина Джоли', 'content': 'Всемирно известная актриса и гуманитарий.', 'is_published': True},
     {'id': 2, 'title': 'Джонни Депп', 'content': 'Талантливый актер и кинозвезда.', 'is_published': False},
@@ -20,22 +26,20 @@ def about(request):
     return render(request, 'women/about.html')
 
 
-def category(request, cat_id):
-    return HttpResponse(f"<h1>Категории</h1>"
-                        f"<p>id: {cat_id}</p>")
+def addpage(request):
+    return HttpResponse(f"Добавление статьи")
 
 
-def category_slug(request, cat_slug):
-    print(request.GET)
-    return HttpResponse(f"<h1>Категории</h1>"
-                        f"<p>slug: {cat_slug}</p>")
+def contact(request):
+    return HttpResponse(f"Обратная связь")
 
 
-def archive(request, year):
-    if year > 2023:
-        return redirect('home')
-    return HttpResponse(f"<h1>Архив по годам</h1>"
-                        f"<p>{year}</p>")
+def login(request):
+    return HttpResponse(f"Авторизация")
+
+def how_post(request,post_id):
+    return HttpResponse(f"Отображение статьи с id: {post_id}")
+
 
 
 def page_not_fount(requestt,exception):
