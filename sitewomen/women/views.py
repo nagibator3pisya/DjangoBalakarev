@@ -7,6 +7,8 @@ def index(request):
     data = {
         'title': "Главная станица",
         'menu': menu,
+         "float": 5.55,
+        "string": "добавление заглавной буквы в вверхний регистр"
     }
     return render(request, "women/home.html", context=data)
 
