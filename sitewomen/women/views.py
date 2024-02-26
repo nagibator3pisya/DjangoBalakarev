@@ -1,10 +1,14 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 
-
+menu = ['О сайте','Добавить статью','Обратная связь','Войти']
 
 def index(request):
-    return render(request, "women/home.html")
+    data = {
+        'title': "Главная станица",
+        'menu': menu,
+    }
+    return render(request, "women/home.html", context=data)
 
 
 def about(request):
