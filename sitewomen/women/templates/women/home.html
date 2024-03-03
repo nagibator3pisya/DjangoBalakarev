@@ -1,23 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<ul>
+{% extends 'base.html' %}
 
-    <li> <a href="{% url 'home' %}">Главная страница</a></li>
-    {% for m in menu %}
-    {%if not forloop.last %} <li>{%else%}
-    <li class = "last"> {%endif%}
-        <a href="{% url m.url_name %}">{{ m.title }}</a>
-    </li>
-    {% endfor %}
+{% block content %}
 
-</ul>
-<h1>{{ title }}</h1>
 
+<!--главная странци -->
 <ul>
     {% for p in post %}
     {% if p.is_published %}
@@ -35,5 +21,6 @@
     {% endfor %}
 
 </ul>
-</body>
-</html>
+<!--главная странци -->
+
+{% endblock  %}
