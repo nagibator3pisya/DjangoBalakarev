@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!--главная страница -->
+{%include 'women/includes/nav.html'%}
 
 
-<!--главная странци -->
 <ul>
     {% for p in post %}
     {% if p.is_published %}
